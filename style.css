@@ -1,0 +1,127 @@
+/* * seleciona todos os elementos */
+* {
+    margin: 0;
+    padding: 0;  
+}
+/* todo a será da cor branco "#fff" */
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+/* estilo simples e elegante */
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+/* logo e lista um do lado do outro */
+nav {
+    display: flex;
+    /* espaço ou redor seja metade do espaço entre eles */
+    justify-content: space-around;
+    /* alinhar ambos verticalmente ao centro e definir uma tipografia padrão */
+    align-items: center;
+    font-family: system-ui, -apple-system, Arial, Helvetica, sans-serif;
+    background: #23232e;
+    /* unidade responsiva que se adapta a altura da janela de visualização do usuário */
+    height: 8vh;
+}
+
+main {
+    /* refere ao seu posicionamento nos eixos x e y */
+    background: url("bj.jpg.jpg") no-repeat center center;
+    /* caso a resolução do monitor for maior que o da imagem */
+    background-size: cover;
+    height: 92vh;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+}
+
+.mobile-menu {
+    /* mãozinha com cursor */
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+    transition: 0.3s;
+}
+
+@media (max-width: 999px) {
+    body {
+        /* se transbordar fica escondido */
+        overflow-x: hidden;
+    }
+    .nav-list {
+        /* quando a tela for menor que este tamanho nav-list terá position absolute, */
+        /* o que significa que agora podemos posicionar nossa navegação onde quiser */
+        position: absolute;
+        /* para ficar loga abaixo de header */
+        top: 8vh;
+        /* O menu ficará na direita */
+        right: 0;
+        width: 50vw;
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        /* espalha os links */
+        justify-content: space-around;
+        transform: translateX(100%);
+        /* chegada suave */
+        transition: transform 0.3s ease-in;
+    } 
+    .nav-list li {
+        margin-left: 0;
+        opacity: 0;
+    }
+    .mobile-menu {
+        display: block;
+    }
+}
+/* classe do JS */
+.nav-list.active {
+    transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+    opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+}
+
+
